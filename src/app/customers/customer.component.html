@@ -57,8 +57,7 @@
                    type="email"
                    placeholder="Email (required)"
                    formControlName="email"
-                   [ngClass]="{'is-invalid': customerForm.get('emailGroup').errors ||
-                    ((email.touched || email.dirty) && !email.valid) }" />
+                   [ngClass]="{'is-invalid': emailValidationMessage }" />
             <span class="invalid-feedback">
               <span *ngIf="email.errors?.required">
                 Please enter your email address.
@@ -137,7 +136,6 @@
               <input type="radio"
                      class="form-check-input"
                      value="email"
-                     (click)="setNotification('email')"
                      formControlName="notification">Email
             </label>
           </div>
@@ -146,7 +144,6 @@
             <input type="radio"
                    class="form-check-input"
                    value="text"
-                   (click)="setNotification('text')"
                    formControlName="notification">Text
             </label>
           </div>
