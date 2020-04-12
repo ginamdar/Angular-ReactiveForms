@@ -66,14 +66,7 @@ export class CustomerComponent implements OnInit {
       rating: [null, ratingRange(1, 5)],
       notification: 'email',
       sendCatalog: true,
-      addresses: this.fb.group({
-        addressType: 'home',
-        street1: '',
-        street2: '',
-        city: '',
-        state: '',
-        zip: ''
-      })
+      addresses: this.buildAddressGroup()
     });
     // this.customerForm = new FormGroup({
     //   firstName: new FormControl(this.customer.firstName),
@@ -92,6 +85,17 @@ export class CustomerComponent implements OnInit {
     ).subscribe((value => {
       this.setMessage(emailControl);
     }));
+  }
+
+  buildAddressGroup(): FormGroup {
+    return this.fb.group({
+      addressType: 'home',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: ''
+    });
   }
 
   setMessage(c: AbstractControl): void {
