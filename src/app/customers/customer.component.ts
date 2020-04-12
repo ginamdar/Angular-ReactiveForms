@@ -66,12 +66,14 @@ export class CustomerComponent implements OnInit {
       rating: [null, ratingRange(1, 5)],
       notification: 'email',
       sendCatalog: true,
-      addressType: 'home',
-      street1: '',
-      street2: '',
-      city: '',
-      state: '',
-      zip: ''
+      addresses: this.fb.group({
+        addressType: 'home',
+        street1: '',
+        street2: '',
+        city: '',
+        state: '',
+        zip: ''
+      })
     });
     // this.customerForm = new FormGroup({
     //   firstName: new FormControl(this.customer.firstName),
