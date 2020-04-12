@@ -65,7 +65,13 @@ export class CustomerComponent implements OnInit {
       // rating: [null, ratingRange],
       rating: [null, ratingRange(1, 5)],
       notification: 'email',
-      sendCatalog: true
+      sendCatalog: true,
+      addressType: 'home',
+      street1: '',
+      street2: '',
+      city: '',
+      state: '',
+      zip: ''
     });
     // this.customerForm = new FormGroup({
     //   firstName: new FormControl(this.customer.firstName),
@@ -112,6 +118,9 @@ export class CustomerComponent implements OnInit {
   }
   get rating() {
     return this.customerForm.get('rating');
+  }
+  get sendCatalog() {
+    return this.customerForm.get('sendCatalog');
   }
 
   populateTestData() {
