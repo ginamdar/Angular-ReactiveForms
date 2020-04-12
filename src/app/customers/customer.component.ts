@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './customer';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {debounce, map} from 'rxjs/operators';
 import {interval} from 'rxjs';
 
@@ -66,7 +66,7 @@ export class CustomerComponent implements OnInit {
       rating: [null, ratingRange(1, 5)],
       notification: 'email',
       sendCatalog: true,
-      addresses: this.buildAddressGroup()
+      addresses: this.fb.array([this.buildAddressGroup()])
     });
     // this.customerForm = new FormGroup({
     //   firstName: new FormControl(this.customer.firstName),
@@ -127,6 +127,9 @@ export class CustomerComponent implements OnInit {
   }
   get sendCatalog() {
     return this.customerForm.get('sendCatalog');
+  }
+  get addresses(): FormArray {
+    return this.customerForm.get('addresses') as FormArray;
   }
 
   populateTestData() {
