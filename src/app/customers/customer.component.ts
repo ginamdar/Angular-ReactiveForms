@@ -162,4 +162,8 @@ export class CustomerComponent implements OnInit {
     }
     this.customerForm.get('phone').updateValueAndValidity();
   }
+
+  addAddress(): void {
+    this.addresses.push(this.buildAddressGroup());
+  }
 }

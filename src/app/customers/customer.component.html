@@ -276,10 +276,23 @@
                   [disabled]="!customerForm.valid">
             Save
           </button>
+
           <button class="btn btn-outline-secondary"
                   type="button"
                   (click)="populateTestData()">Test Data</button>
 
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <div class="col-md-4">
+          <button class="btn btn-secondary mr-5"
+                  type="button"
+                  (click)="addAddress()"
+                  [disabled]="!addresses.valid"
+
+          >
+            Add New Address
+          </button>
         </div>
       </div>
     </form>
@@ -289,3 +302,4 @@
 <br>Touched: {{ customerForm.touched }}
 <br>Valid: {{ customerForm.valid }}
 <br>Value: {{ customerForm.value | json }}
+<br>Value: {{ addresses.get('0.street1')?.value }}
